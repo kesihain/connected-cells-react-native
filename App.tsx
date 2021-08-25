@@ -8,19 +8,14 @@ import { marginTop } from 'styled-system';
 
 export default function App() {
   const [size,setSize] = useState({row:0,column:0})
-  const [grid,setGrid] = useState([]) 
-  const [test,setTest] = useState(1)
+  const [grid,setGrid] = useState([])
 
   useEffect(()=>{
     if(size.row>0&&size.column>0){
       // const matrix = Array.from({length:size.row},()=>Array.from({length:size.column},()=>0))
       let matrix = []
       for(let i= 0;i<size.row;i++){
-        let row=[]
-        // for(let n=0;n<size.column;i++){
-        //   row.push(0)
-        // }
-        // let row = Array.from({length:size.column},()=>0)
+        let row = Array.from({length:size.column},()=>0)
         matrix.push(row)
       } 
       setGrid(matrix)
@@ -42,7 +37,7 @@ export default function App() {
   }
 
   return (
-    <appContext.Provider value={{grid,setGrid,test,setTest}}>
+    <appContext.Provider value={{grid,setGrid}}>
     <NativeBaseProvider>
         <Box safeAreaTop backgroundColor="#6200ee" />
         <HStack bg='#6200ee' px={1} py={3} justifyContent='space-between' alignItems='center'>
