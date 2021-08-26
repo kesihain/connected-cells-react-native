@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { appContext } from './App'
+import { HStack, Stack, Center, FlatList, Container, Pressable } from 'native-base'
 
-export default function Result(){
-    const {grid} = useContext(appContext)
-
-    
+export default function Result() {
+    const { grid,setGrid, size } = useContext(appContext)
+    const [result, setResult] = useState(0)
+    const [status, setStatus] = useState('calculate')
     const connectedCell = (matrix) => {
         let maxConnCells = 0;
         let curConnCells = 0;
@@ -34,7 +35,6 @@ export default function Result(){
     const hasAdjacents = (matrix, r, c, curConnCells) => {
         const rows = [0, 1, 1, 1, 0, 1, -1, -1];
         const cols = [1, 1, 0, -1, -1, -1, 0, 0];
-
         matrix[r][c] = 0;
 
         for (let i = 0; i < rows.length; i++) {
@@ -46,7 +46,79 @@ export default function Result(){
         return curConnCells;
     };
 
+    const findResult = () => {
+        let mat = grid
+        setResult(connectedCell(mat))
+        console.log(grid)
+        setStatus('reset')
+    }
+
+    const reset = () => {
+        let matrix = []
+        for (let i = 0; i < size.row; i++) {
+            let row = Array.from({ length: size.column }, () => 0)
+            matrix.push(row)
+        }
+        setGrid(matrix)
+        setStatus('calculate')
+        setResult(0)
+    }
+
+
     return (
-        <Text>{connectedCell(grid)}</Text>
+        <Container py={3}>
+
+            <Stack space={3} py={1} alignItems="center">
+                <HStack space={3} alignItems="center">
+                    {status == 'calculate'
+                        ? <Pressable onPress={() => findResult()}>
+                            <Center
+                                px={3}
+                                py={3}
+                                size={16}
+                                bg="primary.400"
+                                rounded="md"
+                                _text={{
+                                    color: "white",
+                                }}
+                                shadow={3}
+                            >
+                                Calculate Result
+
+                            </Center>
+                        </Pressable>
+                        : <Pressable onPress={() => reset()}>
+                            <Center
+                                px={3}
+                                py={3}
+                                size={16}
+                                bg="primary.400"
+                                rounded="md"
+                                _text={{
+                                    color: "white",
+                                }}
+                                shadow={3}
+                            >
+                                Reset
+                            </Center>
+                        </Pressable>
+
+                    }
+                    <Center
+                        py={3}
+                        px={3}
+                        size={16}
+                        bg="primary.400"
+                        rounded="md"
+                        _text={{
+                            color: "white",
+                        }}
+                        shadow={3}
+                    >
+                        {result}
+                    </Center>
+                </HStack>
+            </Stack>
+        </Container>
     )
 }

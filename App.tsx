@@ -37,7 +37,7 @@ export default function App() {
   }
 
   return (
-    <appContext.Provider value={{grid,setGrid}}>
+    <appContext.Provider value={{grid,setGrid,size}}>
     <NativeBaseProvider>
         <Box safeAreaTop backgroundColor="#6200ee" />
         <HStack bg='#6200ee' px={1} py={3} justifyContent='space-between' alignItems='center'>

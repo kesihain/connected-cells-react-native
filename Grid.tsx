@@ -7,22 +7,17 @@ import Result from './Result'
 export default function Grid({ size }) {
     
     const { grid, setGrid } = useContext(appContext)
-    const [result,setResult] = useState(0)
 
     const pressCell = (row, column) => {
-        // console.log(grid)
         setGrid(prev => {
             let temp = [...prev]
             if (prev[row.item][column] == 0) {
                 temp[row.item][column] = 1
-                console.log(temp)
             } else {
                 temp[row.item][column] = 0
-                console.log(temp)
             }
             return temp
         })
-        console.log(grid)
     }
 
     const rows = Array.from(Array(size.row).keys())
@@ -67,7 +62,7 @@ export default function Grid({ size }) {
                 keyExtractor={item => item.toString()}
             />
             {/* <Text>{connectedCell(grid)}</Text> */}
-            {/* <Result></Result> */}
+            <Result></Result>
         </Container>
 
     )
