@@ -37,7 +37,7 @@ export default function Grid({ size }) {
                             <Center
                                 px={1}
                                 key={columnNumber}
-                                size={size.column < 5 ? 16 : 8}
+                                size={size.column < 6 ? 8 : 5}
                                 bg="emerald.400"
                                 rounded="md"
                                 _text={{
@@ -56,7 +56,7 @@ export default function Grid({ size }) {
         </Stack>
     )
     return (
-        <Container py={3}>
+        <Container flex={1} py={3}>
             {/* <Text>{size.row},{size.column},{typeof (size.row)}</Text> */}
             <FlatList
                 data={rows}

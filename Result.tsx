@@ -75,7 +75,7 @@ export default function Result() {
                             <Center
                                 px={3}
                                 py={3}
-                                size={16}
+                                size={20}
                                 bg="primary.400"
                                 rounded="md"
                                 _text={{
@@ -84,7 +84,7 @@ export default function Result() {
                                 shadow={3}
                             >
                                 <Text>
-                                    Calculate Result
+                                    Find Result
                                 </Text>
 
                             </Center>
@@ -93,7 +93,7 @@ export default function Result() {
                             <Center
                                 px={3}
                                 py={3}
-                                size={16}
+                                size={20}
                                 bg="primary.400"
                                 rounded="md"
                                 _text={{
