@@ -45,7 +45,9 @@ export default function Grid({ size }) {
                                 }}
                                 shadow={3}
                             >
+                                <Text>
                                 {grid[rowNumber.item] ? grid[rowNumber.item][columnNumber] : 0}
+                                </Text>
                             </Center>
                         </Pressable>
                     ))

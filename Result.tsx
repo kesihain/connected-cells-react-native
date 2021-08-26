@@ -4,7 +4,7 @@ import { appContext } from './App'
 import { HStack, Stack, Center, FlatList, Container, Pressable } from 'native-base'
 
 export default function Result() {
-    const { grid,setGrid, size } = useContext(appContext)
+    const { grid, setGrid, size } = useContext(appContext)
     const [result, setResult] = useState(0)
     const [status, setStatus] = useState('calculate')
     const connectedCell = (matrix) => {
@@ -83,7 +83,9 @@ export default function Result() {
                                 }}
                                 shadow={3}
                             >
-                                Calculate Result
+                                <Text>
+                                    Calculate Result
+                                </Text>
 
                             </Center>
                         </Pressable>
@@ -99,7 +101,9 @@ export default function Result() {
                                 }}
                                 shadow={3}
                             >
-                                Reset
+                                <Text>
+                                    Reset
+                                </Text>
                             </Center>
                         </Pressable>
 
@@ -115,7 +119,9 @@ export default function Result() {
                         }}
                         shadow={3}
                     >
-                        {result}
+                        <Text>
+                            {result}
+                        </Text>
                     </Center>
                 </HStack>
             </Stack>
